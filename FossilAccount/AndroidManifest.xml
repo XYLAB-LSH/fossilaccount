@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fossil.fossilaccount"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Light.NoTitleBar" >
+        <activity
+            android:name="com.fossil.fossilaccount.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fossil.fossilaccount.WelcomeAct"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fossil.fossilaccount.DetailInfoAct"
+            android:label="@string/title_activity_detail_info" >
+        </activity>
+        <activity
+            android:name="com.fossil.fossilaccount.EditUserinfoAct"
+            android:label="@string/title_activity_edit_userinfo" >
+        </activity>
+    </application>
+
+</manifest>

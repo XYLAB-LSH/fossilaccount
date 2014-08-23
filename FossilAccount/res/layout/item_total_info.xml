@@ -1,0 +1,27 @@
+<com.fossil.account.view.SquareView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+     >
+
+    <ImageView
+        android:id="@+id/iv_consume_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+         />
+
+    <TextView
+        android:id="@+id/consume_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_consume_icon"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+
+</com.fossil.account.view.SquareView>

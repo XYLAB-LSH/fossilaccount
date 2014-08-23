@@ -1,0 +1,197 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_base" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/bg_logo1" >
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/boy" />
+
+        <TextView
+            android:id="@+id/tv_frag_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:text="昵称"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <!-- 个人信息设置 -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_setting"
+                style="@style/me_item_bg" >
+
+                <ImageView
+                    android:id="@+id/iv_logo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    android:id="@+id/tv_tip"
+                    style="@style/me_item_text"
+                    android:layout_toRightOf="@id/iv_logo1"
+                    android:text="个人资料设置" />
+            </RelativeLayout>
+            <!-- 详情 -->
+
+            <RelativeLayout style="@style/me_item_bg" >
+
+                <ImageView
+                    android:id="@+id/iv_logo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    android:id="@+id/tv_tip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/iv_logo2"
+                    android:text="每月消费详情"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_info_money1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_logo2"
+                    android:text="总花费：1000"
+                    android:textColor="@android:color/darker_gray" />
+            </RelativeLayout>
+            <!-- 评论 -->
+
+            <RelativeLayout style="@style/me_item_bg" >
+
+                <ImageView
+                    android:id="@+id/iv_logo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    style="@style/me_item_text"
+                    android:layout_toRightOf="@id/iv_logo3"
+                    android:text="意见反馈" />
+            </RelativeLayout>
+            <!-- 关于我 -->
+
+            <RelativeLayout style="@style/me_item_bg" >
+
+                <ImageView
+                    android:id="@+id/iv_logo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    style="@style/me_item_text"
+                    android:layout_toRightOf="@id/iv_logo4"
+                    android:text="关于我们" />
+            </RelativeLayout>
+            <!-- 帮助中心 -->
+
+            <RelativeLayout style="@style/me_item_bg" >
+
+                <ImageView
+                    android:id="@+id/iv_logo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    style="@style/me_item_text"
+                    android:layout_toRightOf="@id/iv_logo4"
+                    android:text="帮助中心" />
+            </RelativeLayout>
+            <!-- 分享 -->
+
+            <RelativeLayout style="@style/me_item_bg" >
+
+                <ImageView
+                    android:id="@+id/iv_logo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    style="@style/me_item_text"
+                    android:layout_toRightOf="@id/iv_logo5"
+                    android:text="分享给大家" />
+            </RelativeLayout>
+            <!-- 下一版本计划 -->
+
+            <RelativeLayout
+                style="@style/me_item_bg"
+                android:layout_marginBottom="10dp" >
+
+                <ImageView
+                    android:id="@+id/iv_logo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/person_logo" />
+
+                <TextView
+                    style="@style/me_item_text"
+                    android:layout_toRightOf="@id/iv_logo5"
+                    android:text="下一版本规划" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
