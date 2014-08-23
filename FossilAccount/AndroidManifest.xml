@@ -4,9 +4,19 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- Permission for Unit Test -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
@@ -16,6 +26,78 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
+
+        <!-- 友盟 -->
+        <meta-data
+            android:name="53f822f9fd98c585de01dc6a"
+            android:value="YOUR_APP_KEY" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" />
+        
+        <meta-data
+    android:name="UMENG_MESSAGE_SECRET"
+    android:value="45c320c714794cf955a15af8200cabcd" >
+</meta-data>
+<!--友盟反馈  -->
+        <activity android:name="com.umeng.fb.ConversationActivity" />
+        <activity android:name="com.umeng.fb.ContactActivity" />
+        <!--友盟通知  -->
+        <receiver
+    android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+    android:exported="false" >
+</receiver>
+<receiver android:name="com.umeng.message.RegistrationReceiver" >
+    <intent-filter>
+        <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+        <data android:scheme="package" />
+    </intent-filter>
+</receiver>
+<receiver android:name="com.umeng.message.UmengBroadcastReceiver" >
+    <intent-filter>
+        <action android:name="org.agoo.android.intent.action.RECEIVE" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="com.fossil.fossilaccount.intent.action.COMMAND" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="org.agoo.android.intent.action.RE_ELECTION_V2" />
+    </intent-filter>
+</receiver>
+<service
+    android:name="com.umeng.message.UmengService"
+    android:exported="true"
+    android:process=":umengService_v1" >
+    <intent-filter>
+        <action android:name="com.fossil.fossilaccount.intent.action.START" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="com.fossil.fossilaccount.intent.action.COCKROACH" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="org.agoo.android.intent.action.PING" />
+    </intent-filter>
+</service>
+<service
+    android:name="org.android.agoo.service.ElectionService"
+    android:exported="true"
+    android:process=":umengService_v1" >
+    <intent-filter>
+        <action android:name="org.agoo.android.intent.action.ELECTION_V2" />
+    </intent-filter>
+</service>
+<service android:name="com.umeng.message.UmengIntentService" />
+<!-- V1.3.0添加的service，负责下载通知的资源 -->
+<service android:name="com.umeng.message.UmengDownloadResourceService" />
+
+
+
+        <!-- 其他111111111111111111111111111111111111111111111111111111111111111111 -->
         <activity
             android:name="com.fossil.fossilaccount.MainActivity"
             android:screenOrientation="portrait" />

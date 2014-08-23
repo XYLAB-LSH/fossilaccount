@@ -101,7 +101,9 @@
             </RelativeLayout>
             <!-- 评论 -->
 
-            <RelativeLayout style="@style/me_item_bg" >
+            <RelativeLayout
+                  android:id="@+id/rl_feedback"
+                 style="@style/me_item_bg" >
 
                 <ImageView
                     android:id="@+id/iv_logo3"

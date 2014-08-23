@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fossil.account.adapter.TotalAdapter;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,11 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.fossil.account.adapter.TotalAdapter;
+import com.umeng.analytics.MobclickAgent;
 
 public class Fragment2 extends Fragment implements OnItemClickListener {
 	private Context context;
@@ -41,7 +39,14 @@ public class Fragment2 extends Fragment implements OnItemClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
-
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onPageStart("MainScreen"); //Í³¼ÆÒ³Ãæ
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPageEnd("MainScreen"); 
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

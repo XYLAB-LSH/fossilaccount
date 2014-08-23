@@ -1,6 +1,7 @@
 package com.fossil.fossilaccount;
 
 import java.io.IOException;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -20,9 +21,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.fossil.account.util.ImageHelper;
 import com.fossil.account.util.MyLog;
 import com.fossil.account.util.MyShareprefrence;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
 
 public class Fragment3 extends Fragment implements OnClickListener {
 	private ImageView iv_logo;
@@ -31,14 +35,21 @@ public class Fragment3 extends Fragment implements OnClickListener {
 	private Activity act;
 	private final String IMAGE_TYPE = "image/*";
 	private final int IMAGE_CODE = 1;
-	private RelativeLayout rl_setting;
-
+	private RelativeLayout rl_setting,rl_feedback;
+	FeedbackAgent agent;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
-
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onPageStart("MainScreen"); //统计页面
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPageEnd("MainScreen"); 
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -59,12 +70,15 @@ public class Fragment3 extends Fragment implements OnClickListener {
 				.getNickName());
 		rl_setting = (RelativeLayout) view.findViewById(R.id.rl_setting);
 		rl_setting.setOnClickListener(this);
-
+		rl_feedback = (RelativeLayout) view.findViewById(R.id.rl_feedback);
+		rl_feedback.setOnClickListener(this);
+		
 		iv_logo = (ImageView) view.findViewById(R.id.iv_logo);
 		iv_logo.setOnClickListener(this);
 		// 显示头像
 		setImg();
-
+		agent = new FeedbackAgent(act);
+		//agent.sync();
 	}
 
 	private void setImg() {
@@ -109,6 +123,10 @@ public class Fragment3 extends Fragment implements OnClickListener {
 			break;
 		case R.id.rl_setting:
 			startActivityForResult(new Intent(act, EditUserinfoAct.class), 2);
+			break;
+		case R.id.rl_feedback:
+			//意见反馈
+			agent.startFeedbackActivity();
 			break;
 		default:
 			break;

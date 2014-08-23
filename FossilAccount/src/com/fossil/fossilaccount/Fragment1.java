@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fossil.account.adapter.DayInfoAdapter;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.fossil.account.adapter.DayInfoAdapter;
+import com.umeng.analytics.MobclickAgent;
 
 public class Fragment1 extends Fragment {
 	private TextView tv_top_center, btn_save;
@@ -30,7 +31,14 @@ public class Fragment1 extends Fragment {
 		super.onCreate(savedInstanceState);
 		context = getActivity().getApplicationContext();
 	}
-
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onPageStart("MainScreen"); //Í³¼ÆÒ³Ãæ
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPageEnd("MainScreen"); 
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

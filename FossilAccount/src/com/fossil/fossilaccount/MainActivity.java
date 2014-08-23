@@ -3,11 +3,12 @@ package com.fossil.fossilaccount;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.view.Menu;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TabHost.TabSpec;
-import android.widget.Toast;
+
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 
 public class MainActivity extends FragmentActivity   {
 
@@ -25,8 +26,19 @@ public class MainActivity extends FragmentActivity   {
 		setContentView(R.layout.activity_main);
 		initView();
 	}
-
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);       //统计时长
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
 	private void initView() {
+		
+		 PushAgent mPushAgent = PushAgent.getInstance(this);
+		 mPushAgent.enable();
+		 PushAgent.getInstance(this).onAppStart();
 		mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		// 得到fragment的个数

@@ -12,9 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.ListView;
 
 import com.fossil.account.adapter.ConsumInfoAdapter;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 
 public class DetailInfoAct extends Activity {
 	private Context context;
@@ -32,11 +33,20 @@ public class DetailInfoAct extends Activity {
 		setContentView(R.layout.activity_detail_info);
 		initView();
 	}
-
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onPageStart("SplashScreen"); //统计页面
+	    MobclickAgent.onResume(this);          //统计时长
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPageEnd("SplashScreen"); // 保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息 
+	    MobclickAgent.onPause(this);
+	}
 	private void initView() {
 		context = this;
 		act = this;
-
+		PushAgent.getInstance(context).onAppStart();
 		lv_consume_info = (ExpandableListView) findViewById(R.id.lv_consume_info);
 		lv_consume_info.setGroupIndicator(null); // 去图标
 		try {
